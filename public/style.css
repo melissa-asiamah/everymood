@@ -1,0 +1,87 @@
+body{
+  word-wrap:break-word;
+  background-color: khaki;
+  font-family: 'Suranna', serif;
+}
+
+a {
+  float: right;
+  font-size: 1.8rem;
+  margin-left: 1%;
+  margin-bottom: 33px;
+  margin-top: 33px;
+}
+
+
+img{
+  height: 200px;
+}
+
+.jumbotron h1 {
+  font-size: 22rem;
+  font-family: 'Suranna', serif;
+}
+
+
+.stories {
+  border-radius: 5px;
+  background-color: white;
+  width: 30%;
+  margin-left: 3%;
+  padding: 13px;
+  float: left;
+}
+
+img {
+  width: 68%;
+  padding: 21px;
+  float: right;
+  border-radius: 50%;
+}
+
+.reviews {
+  margin-top: 52px;
+}
+
+.stories > p {
+    padding-left: 12px;
+    font-size: 1.6rem;
+    padding-top: 20px;
+}
+
+.stories > span {
+  font-weight: 500;
+}
+
+h2 {
+  margin: auto;
+  font-family: 'Suranna', serif;
+    text-align: center;
+    font-size: 5rem;
+    border-bottom: 0.02px solid black;
+    padding-bottom: 76px;
+}
+
+
+h3 {
+  margin: auto;
+  font-family: 'Suranna', serif;
+  width: 50%;
+  text-align: center;
+  padding-top: 96px;
+}
+
+.jumbotron {
+  background-image: url(img/flowers.jpeg);
+  background-size: 100%; 
+  color: white;
+  margin-bottom: 100px;
+  clear: right;
+  padding-bottom: 141px;
+  padding-top: 136px;
+
+}
+
+.jumbotron p {
+  color: black;
+}

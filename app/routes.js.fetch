@@ -1,0 +1,230 @@
+module.exports = function (app, passport, db) {
+
+  const fetch = require('node-fetch')
+  const base64 = require('base-64')
+  let sessionID = null
+
+  // var AssistantV2 = require('ibm-watson/assistant/v2')
+
+  // var assistant = new AssistantV2({
+  //     version: '2019-02-28'
+  //   });
+
+
+  //routes for homepage and chat
+
+  app.get('/', function (req, res) {
+    res.render('index.ejs');
+  });
+
+
+  app.get('/profile', isLoggedIn, function (req, res) {
+    db.collection('messages').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.render('chat.ejs', {
+        user: req.user,
+        messages: result
+      })
+    })
+  });
+
+  // LOGOUT ==============================
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
+  // chat routes ===============================================================
+
+
+  // app.post('/api/message', function (req, res) {
+  //   var assistantId = process.env.ASSISTANT_ID || '<assistant-id>';
+  //   if (!assistantId || assistantId === '<assistant-id>') {
+  //     return res.json({
+  //       'output': {
+  //         'text': 'The app has not been configured with a <b>ASSISTANT_ID</b> environment variable. Please refer to the ' + '<a href="https://github.com/watson-developer-cloud/assistant-simple">README</a> documentation on how to set this variable. <br>' + 'Once a workspace has been defined the intents may be imported from ' + '<a href="https://github.com/watson-developer-cloud/assistant-simple/blob/master/training/car_workspace.json">here</a> in order to get a working application.'
+  //       }
+  //     });
+  //   }
+
+  //   var textIn = '';
+
+  //   if(req.body.input) {
+  //     textIn = req.body.input.text;
+  //   }
+  //   console.log("textIn", textIn);
+
+  //   var payload = {
+  //     assistant_id: assistantId,
+  //     session_id: req.body.session_id,
+  //     input: {
+  //       message_type : 'text',
+  //       text : textIn
+  //     }
+  //   };
+
+  //   // Send the input to the assistant service
+  //   assistant.message(payload, function (err, data) {
+  //     if (err) {
+  //       console.log("error:", err);
+  //       const status = (err.code  !== undefined && err.code > 0)? err.code : 500;
+  //       return res.status(status).json(err);
+  //     }
+
+  //     return res.json(data);
+  //   });
+  // });
+
+  app.post('/api/message', function (req, res) {
+    const auth = "Basic " + base64.encode("apikey:qz_ygf0wJ32sUwLCZ6oWpc_eZ197bZMESzIgmU5lSwzd")
+    console.log(auth)
+    fetch("https://gateway.watsonplatform.net/assistant/api/v2/assistants/9d52cb15-fc97-4686-b091-b83e0fbd539c/sessions/" + sessionID + "/message?version=2019-02-28", {
+      method: "POST",
+      headers: {
+        "Authorization": auth,
+        "Content-Type": "application/json"
+      },
+      body: {
+        input: {
+          text: req.body.message
+        }
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        console.log("Watson response", json, json.output.generic[0])
+        sessionID = json.session_id
+      })
+  })
+
+  app.get('/api/session', function (req, res) {
+    // assistant.createSession({
+    //   assistant_id: process.env.ASSISTANT_ID || '{assistant_id}',
+    // }, function (error, response) {
+    //   console.log("session response:", response, error);
+    //   if (error) {
+    //     return res.send(error);
+    //   } else {
+    //     return res.send(response);
+    //   }
+    // });
+    const auth = "Basic " + base64.encode("apikey:qz_ygf0wJ32sUwLCZ6oWpc_eZ197bZMESzIgmU5lSwzd")
+    console.log(auth)
+    fetch("https://gateway.watsonplatform.net/assistant/api/v2/assistants/9d52cb15-fc97-4686-b091-b83e0fbd539c/sessions?version=2019-02-28", {
+      method: "POST",
+      headers: { "Authorization": auth }
+    })
+      .then(response => response.json())
+      .then(json => {
+        console.log("Watson session!", json)
+        sessionID = json.session_id
+      })
+  });
+
+  // app.post('/messages', (req, res) => {
+  //   // db.collection('messages').save({//messages: req.body.messages mood: req.body.mood}, (err, result) => {
+  //   //   if (err) return console.log(err)
+  //   //   console.log('saved to database')
+  //   //   res.redirect('/profile')
+  //   // })
+  // })
+
+  // app.put('/messages', (req, res) => {
+  //   db.collection('messages')
+  //   .findOneAndUpdate({}, {
+  //     $set: {
+  //     }
+  //   }, {
+  //     sort: {_id: -1},
+  //     upsert: true
+  //   }, (err, result) => {
+  //     if (err) return res.send(err)
+  //     res.send(result)
+  //   })
+  // })
+
+  //Will potentially add a mood graph based off of user input to be the "update"
+
+  // app.put('mood', (req, res) => {
+  //     db.collection('messages')
+  //     .findOneAndUpdate({}, {
+  //       $set: {
+
+  //       }
+  //     }, {
+  //       sort: {_id: -1},
+  //       upsert: true
+  //     }, (err, result) => {
+  //       if (err) return res.send(err)
+  //       res.send(result)
+  //     })
+  //   })
+
+
+
+
+  //Still need to figure out what to delete. Moods??
+  // app.delete('', (req, res) => {
+  //   db.collection('messages').findOneAndDelete({}, (err, result) => {
+  //     if (err) return res.send(500, err)
+  //     res.send('Message deleted!')
+  //   })
+  // })
+
+  // =============================================================================
+  // AUTHENTICATE (FIRST LOGIN) ==================================================
+  // =============================================================================
+
+  // locally --------------------------------
+  // LOGIN ===============================
+  // show the login form
+  app.get('/login', function (req, res) {
+    res.render('login.ejs', { message: req.flash('loginMessage') });
+  });
+
+  // process the login form
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/profile', // redirect to the secure profile section
+    failureRedirect: '/login', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
+  }));
+
+  // SIGNUP =================================
+  // show the signup form
+  app.get('/signup', function (req, res) {
+    res.render('signup.ejs', { message: req.flash('signupMessage') });
+  });
+
+  // process the signup form
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile', // redirect to the secure profile section
+    failureRedirect: '/signup', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
+  }));
+
+  // =============================================================================
+  // UNLINK ACCOUNTS =============================================================
+  // =============================================================================
+  // used to unlink accounts. for social accounts, just remove the token
+  // for local account, remove email and password
+  // user account will stay active in case they want to reconnect in the future
+
+  // local -----------------------------------
+  app.get('/unlink/local', isLoggedIn, function (req, res) {
+    var user = req.user;
+    user.local.email = undefined;
+    user.local.password = undefined;
+    user.save(function (err) {
+      res.redirect('/profile');
+    });
+  });
+
+};
+
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+
+  res.redirect('/');
+}

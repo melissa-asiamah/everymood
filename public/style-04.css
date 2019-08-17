@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("img/sky.png");
+    background-size: 100%
+}
+
+li {
+    list-style: none;
+}
+
+.usermsg {
+    color: teal;
+    width: 100%; 
+    display: block;
+}
+
+span {
+    padding: 5px;
+}
+
+h2 {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+section {
+    width: 60%;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: white;
+    opacity: 0.60;
+    width: 50%;
+    margin: auto;
+}

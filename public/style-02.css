@@ -1,0 +1,169 @@
+/* Some of this CSS code is from another website for styling chat purposes*/
+
+
+* {
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html,body {
+    height:100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height:650px;
+    background-image:url("img/sky.png");
+    background-size: 100%;
+
+}
+
+a {
+ float: left;
+ margin-bottom: 23px;
+ padding-top: 2px;
+ padding-left: 5px;
+}
+
+h1 {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+p {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding:0 10px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.96);
+    border-bottom: 1px solid #00aabb;
+    margin:0;
+    color: #007d88;
+    font-weight: bold;
+}
+main {
+    width: 90%;
+    max-width: 400px;
+    height: 600px;
+    background-color: #fff;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+main .history {
+    flex-grow: 1;
+    padding:10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    overflow: auto;
+}
+
+main .new-message {
+    display: flex;
+    flex-direction: row;
+    margin:10px 10px 0 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 20px; 
+    height:58px;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+    background: #fff; 
+}
+
+#txt-new-message {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none !important;
+    resize: none;
+    font-size: 15px;
+    margin: 0;
+    border-right: 1px solid #ccc;
+    color: #444;
+    overflow: hidden
+}
+
+main .new-message button {
+    color: #4A90E2;
+    border: none;
+   /* background: #c29d5f;*/
+    background: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 6px 10px;
+    border-radius: 5px;
+    outline: none!important;
+    cursor:pointer;
+    align-self: center;
+}
+
+main .history .from-watson, main .history .from-user {
+    padding:10px;
+    margin:10px 0;
+}
+
+main .history .from-watson {
+    position: relative; 
+    background: #00aabb; 
+    border-radius: .4em;
+    align-self: flex-start;
+    color:white;
+}
+main .history .from-watson:after { 
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    top: 50%; 
+    width: 0; 
+    height: 0; 
+    border: 10px solid transparent; 
+    border-right-color: #00aabb; 
+    border-left: 0; 
+    border-bottom: 0; 
+    margin-top: -5px; 
+    margin-left: -10px; 
+}
+
+main .history .from-user {
+    position: relative; 
+    background: #dedede; 
+    border-radius: .4em;
+    align-self: flex-end;
+}
+main .history .from-user:after { 
+    content: ''; 
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
+    width: 0; 
+    height: 0; 
+    border: 10px solid transparent; 
+    border-left-color: #dedede; 
+    border-right: 0; 
+    border-bottom: 0; 
+    margin-top: -5px; 
+    margin-right: -10px;
+}

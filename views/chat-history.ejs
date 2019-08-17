@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>EveryMood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/14935d9727.js"></script>
+    <link rel="stylesheet" href="style-03.css">
+</head>
+<body>
+ <h1>Your chat history</h1>
+    <p>Click icon to the right of date to remove chat history</p>
+    <section> 
+    <ul>
+        <% for (let i =0; i < chats.length; i++) { %>
+            <li><a href="/chatlog/<%=chats[i]._id %>"><%= chats[i].chatName %></a></li>
+            <li><i id="<%=chats[i]._id %>" class="fas fa-trash-alt"></i></li>
+        <% } %>
+        </ul>
+        </section>
+    <script src="chat-history.js"></script>
+</body>
+</html>

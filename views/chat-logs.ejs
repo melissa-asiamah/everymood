@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>EveryMood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/14935d9727.js"></script>
+    <link rel="stylesheet" href="/style-04.css">
+</head>
+<body>
+    <% console.log(chat)%>
+    <h2><%=chat.chatName%></h2>
+    <section>
+    <ul>
+        <% for (let i =0; i < chat.messages.length; i+=2) { console.log("User, watson", chat.messages[i], chat.messages[i+1]) %>
+            <li><span class="usermsg"><%= chat.messages[i].message %></span><span><%= chat.messages[i + 1].message %></span></li>
+        <% } %>
+        </ul>
+    </section>
+</body>
+</html>
