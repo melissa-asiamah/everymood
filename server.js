@@ -6,7 +6,7 @@
 //CONFIG FILE IS FOR STUFF NOT PUSHING TO GITHUB
 // get all the tools we need
 
-if (process.env.NODE_ENV !== ‘production’){
+if (process.env.NODE_ENV !== 'production'){
 require('dotenv').config({silent: true});
 }
 var express  = require('express');
