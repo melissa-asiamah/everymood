@@ -1,0 +1,35 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.5.9",
+    "express": "^4.17.1",
+    "ibm-watson": "^4.3.4",
+    "install": "^0.13.0",
+    "mongoose": "^5.6.6",
+    "nodemon": "^1.19.1",
+    "node-fetch": "^2.6.0",
+    "passport": "^0.3.2",
+    "watson-developer-cloud": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melissa-asiamah/everymood.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melissa-asiamah/everymood/issues"
+  },
+  "homepage": "https://github.com/melissa-asiamah/everymood#readme"
+}
