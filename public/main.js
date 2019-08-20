@@ -111,6 +111,7 @@ function formatWatsonMessage(text) {
     })
 })();
 
+
 /*
  * The following snippet starts a new conversation with Watson Assistant, it consists of sending a blank message, then Watson will respond with the "Greetings" message.
  */

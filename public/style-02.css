@@ -15,31 +15,60 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height:650px;
-    background-image:url("img/sky.png");
+    background-image:url("/img/new02.jpg");
     background-size: 100%;
 
 }
 
+.everyWelcome {
+    width: 45%;
+    float: right;
+    margin-top: 93px;
+}
+
+.checkFloat {
+    float: left;
+    width: 54%;
+}
+
 a {
- float: left;
+ margin-left: 69%;
  margin-bottom: 23px;
  padding-top: 2px;
  padding-left: 5px;
 }
 
 h1 {
-  width: 50%;
-  margin: auto;
-  text-align: center;
+    font-size: 6rem;
+    letter-spacing: -0.04rem;
+    margin-right: 65px;
+    text-align: right;
+    margin-bottom: 65px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    color: floralwhite;
+    text-shadow: 4px 3px 0 #7A7A7A, 2px 1px 0px rgba(53,77,81,0.25);
+}
+
+.headerColor {
+    color: peachpuff;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
 p {
-  width: 50%;
-  margin: auto;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+    text-align: right;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    line-height: 1.1em;
+    color: peachpuff;
+    letter-spacing: -0.04rem;
+    padding-top: 48px;
+    border-top: 3px solid grey;
+    border-radius: 2px;
+    font-size: 2.4rem;
+    margin-right: 65px;
+    width: 90%;
+    margin-left: 16px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
 header {
@@ -58,21 +87,25 @@ header {
     font-weight: bold;
 }
 main {
-    width: 90%;
-    max-width: 400px;
-    height: 600px;
+    height: 685px;
+    width: 89%;
     background-color: #fff;
     align-self: center;
     display:flex;
     flex-direction: column;
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 20px;
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
 
 main .history {
     flex-grow: 1;
-    padding:10px;
+    padding: 26px;
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
@@ -88,7 +121,7 @@ main .new-message {
     border-radius: 20px; 
     height:58px;
     box-sizing: border-box;
-    border:1px solid #ccc;
+    border:3px solid #ccc;
     background: #fff; 
 }
 
@@ -118,16 +151,30 @@ main .new-message button {
     outline: none!important;
     cursor:pointer;
     align-self: center;
+    font-size: 1rem;
 }
 
 main .history .from-watson, main .history .from-user {
     padding:10px;
     margin:10px 0;
+    font-size: 1.4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+   -webkit-transition: all 0.25s ease-in-out;
+   -moz-transition: all 0.25s ease-in-out;
+   -ms-transition: all 0.25s ease-in-out;
+   -o-transition: all 0.25s ease-in-out;
+   transition: all 0.25s ease-in-out;
 }
 
 main .history .from-watson {
     position: relative; 
-    background: #00aabb; 
+    background-color: rgb(175, 116, 120);
     border-radius: .4em;
     align-self: flex-start;
     color:white;
@@ -140,7 +187,7 @@ main .history .from-watson:after {
     width: 0; 
     height: 0; 
     border: 10px solid transparent; 
-    border-right-color: #00aabb; 
+    border-right-color: lavendar; 
     border-left: 0; 
     border-bottom: 0; 
     margin-top: -5px; 
@@ -149,7 +196,7 @@ main .history .from-watson:after {
 
 main .history .from-user {
     position: relative; 
-    background: #dedede; 
+    background-color: rgb(124, 119, 201); 
     border-radius: .4em;
     align-self: flex-end;
 }
@@ -166,4 +213,10 @@ main .history .from-user:after {
     border-bottom: 0; 
     margin-top: -5px; 
     margin-right: -10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
