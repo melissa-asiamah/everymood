@@ -74,29 +74,6 @@ function formatWatsonMessage(text) {
     return "";
 }
 
-function sendMessageToWatson(message, session_id) {
-    console.log("Sending to Watson", message, session_id)
-    fetch("/api/message", {
-        "method": "POST",
-        "headers": {
-            "Content-type": "application/json"
-        },
-        "body": JSON.stringify({
-            "input": {
-                text: message
-            },
-            session_id: session_id
-        })
-    })
-        .then(response => response.json())
-        .then(json => {
-            console.log("Response from Watson", json)
-            let watsonResponse = json.output.generic[0].text
-            console.log("Message from Watson", watsonResponse)
-            moveMessageToHistory('from-watson', watsonResponse);
-        })
-}
-
 
 /**
  * The following code snippet enables sending the message when pressing "enter" in the keyboard.
@@ -122,28 +99,19 @@ function sendMessageToWatson(message, session_id) {
                         session_id: session_id
                     })
                 })
-                    .then(response => response.json())
-                    .then(json => {
-                        console.log("Response from Watson", JSON.stringify(json))
-                        let watsonResponse = json.output.generic[0].text
-                        console.log("Message from Watson", watsonResponse)
-                        moveMessageToHistory('from-watson', watsonResponse);
-                    })
+                .then(response => response.json())
+                .then(json => {
+                    console.log("Response from Watson", json)
+                    let watsonResponse = json.output.generic[0].text
+                    console.log("Message from Watson", watsonResponse)
+                    moveMessageToHistory('from-watson', watsonResponse);
+                })
             }
         }
     })
 })();
 
-function startMood(mood) {
-    // const moodAnchor = document.getElementById(mood)
-    // moodAnchor.addEventListener("click", (e) => {
-    //     e.preventDefault()
-    //     document.getElementById("menu").style.display = "none";
-    //     document.getElementById("startNewChat").style.display = "block";
-    //     document.getElementById("chatWindow").style.display = "block";
-    //     sendMessageToWatson(mood, session_id)
-    // })
-}
+
 /*
  * The following snippet starts a new conversation with Watson Assistant, it consists of sending a blank message, then Watson will respond with the "Greetings" message.
  */
@@ -166,16 +134,5 @@ function startMood(mood) {
                     session_id: session_id
                 })
             })
-                // .then(() => {
-                //     // const newChatButton = document.getElementById("startNewChat")
-                //     // newChatButton.style.display = "none";
-                //     // newChatButton.addEventListener("click", () => location.reload())
-                //     // const chatWindow = document.getElementById("chatWindow")
-                //     // chatWindow.style.display = "none";
-                //     // startMood("happy")
-                //     // startMood("sad")
-                //     // startMood("angry")
-                //     // startMood("mellow")
-                // })
         })
 })()

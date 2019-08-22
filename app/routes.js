@@ -19,9 +19,12 @@ module.exports = function (app, passport, db) {
     res.render('index.ejs');
   });
 
+  app.get('/chart', function (req, res) {
+    res.render('chart.ejs');
+  });
 
   app.get('/profile', function (req, res) {
-    res.render('chat.ejs');
+    res.render('chat.ejs', {user: req.user});
   });
 
 
@@ -146,6 +149,7 @@ module.exports = function (app, passport, db) {
           chatName: "Chat started on" + currentDate.toString(),
           messages: []
         })
+        // req.user.newChat = true;
         return res.send(response);
       }
     });

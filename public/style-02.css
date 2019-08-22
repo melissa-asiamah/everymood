@@ -11,7 +11,7 @@ html,body {
 }
 
 body {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     min-height:650px;
@@ -23,7 +23,7 @@ body {
 .everyWelcome {
     width: 45%;
     float: right;
-    margin-top: 93px;
+    margin-top: 32px;
 }
 
 .checkFloat {
@@ -43,7 +43,7 @@ h1 {
     letter-spacing: -0.04rem;
     margin-right: 65px;
     text-align: right;
-    margin-bottom: 65px;
+    margin-bottom: 27px;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     color: floralwhite;
     text-shadow: 4px 3px 0 #7A7A7A, 2px 1px 0px rgba(53,77,81,0.25);
@@ -64,7 +64,7 @@ p {
     padding-top: 48px;
     border-top: 3px solid grey;
     border-radius: 2px;
-    font-size: 2.4rem;
+    font-size: 2rem;
     margin-right: 65px;
     width: 90%;
     margin-left: 16px;
@@ -215,8 +215,28 @@ main .history .from-user:after {
     margin-right: -10px;
 }
 
+.disclaimer {
+    color: white;
+    text-decoration: none;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
 a {
     color: white;
     text-decoration: none;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
+    margin: 0;
+    margin-left: 71%;
+}
+
+ul {
+    width: 70%;
+    margin-left: 20%;
+}
+
+ul li {
+    text-align: left;
+    list-style: none;
+    font-family: 'Raleway', sans-serif;
 }
